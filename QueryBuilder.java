@@ -16,9 +16,9 @@ public class QueryBuilder {
     public static String getBestBidOrAsk(LinkedList<BookRecord> abList, String bestType) {
         String rString = "";
 
-        if (bestType == "best_ask") {
+        if (bestType.equals("best_ask")) {
             abList.sort(Comparator.comparing(BookRecord::getPrice));
-        } else if (bestType == "best_bid") {
+        } else if (bestType.equals("best_bid")) {
             abList.sort(Comparator.comparing(BookRecord::getPrice).reversed());
         };
 
@@ -110,9 +110,9 @@ public class QueryBuilder {
     }
 
     public static void shareOutSizeBidOrAsk(LinkedList<BookRecord> abList, String bestType, int pSize) {
-        if (bestType == "buy"){
+        if (bestType.equals("buy")){
             abList.sort(Comparator.comparing(BookRecord::getPrice));
-        }else {
+        }else if (bestType.equals("sell")) {
             abList.sort(Comparator.comparing(BookRecord::getPrice).reversed());
         }
 
